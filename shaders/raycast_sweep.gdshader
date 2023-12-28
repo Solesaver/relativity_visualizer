@@ -94,9 +94,8 @@ void fragment() {
 		if (dist < ball_radius + annulus_radius / 2.0f) {
 			done = true;
 		}
-		else {
-			t += ball_dp / annulus_radius;
-		}
+		else
+			t += max(abs(ball_dp) / annulus_radius, 1.0f);
 	}
 	if (done) {
 		done = false;
@@ -109,9 +108,8 @@ void fragment() {
 			if (dist < ball_radius + bounce_height) {
 				done = true;
 			}
-			else {
-				t += ball_dp / (annulus_radius * bounce_height);
-			}
+			else
+				t += max(ball_dp / (annulus_radius * bounce_height), .1f);
 		}
 	}
 	if (done) {
@@ -139,7 +137,7 @@ void fragment() {
 	}
 	
 	// ----- Ghost Ball ----- //
-	vec4 ball_pos_0 = get_transformed_pos(get_ball_pos(camerat.w), camera);
+	vec4 ball_pos_0 = get_transformed_pos(get_ball_pos(camerat.w), camerat);
 	vec3 to_ball_0 = ball_pos_0.xyz - camerat.xyz;
 	float ball_dp_0 = dot(to_ball_0, normalize(dirt.xyz));
 	if (ball_dp_0 > 0.0f) {
