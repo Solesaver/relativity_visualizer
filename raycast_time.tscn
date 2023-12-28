@@ -2,26 +2,26 @@
 
 [ext_resource type="Script" path="res://scripts/raycast_script.gd" id="1_xwl5a"]
 [ext_resource type="Script" path="res://scripts/simple_cam.gd" id="2_7gdtj"]
-[ext_resource type="Shader" path="res://shaders/raycast_render.gdshader" id="3_6he1u"]
+[ext_resource type="Shader" path="res://shaders/raycast_sweep.gdshader" id="3_o5dxe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dm3l"]
 render_priority = 0
-shader = ExtResource("3_6he1u")
+shader = ExtResource("3_o5dxe")
 shader_parameter/time = 50.0
 shader_parameter/light_speed = 30.0
 shader_parameter/lorentz = 1.0
 shader_parameter/speed = null
 shader_parameter/velocity = Vector3(0, 0, -1)
-shader_parameter/resolution = 1000
-shader_parameter/max_refine = 7
-shader_parameter/refinement = 10.0
-shader_parameter/draw_dist = 30.0
-shader_parameter/epsilon = 0.001
+shader_parameter/iterations = 1000
+shader_parameter/epsilon = 0.01
+shader_parameter/bounce_height = 2.0
+shader_parameter/annulus_radius = 10.0
 shader_parameter/ball_radius = 0.5
 shader_parameter/ball_color = Vector3(1, 0, 0)
 shader_parameter/bg_color = Vector3(0, 0, 0.1)
 shader_parameter/floor_color = Vector3(0, 1, 0)
 shader_parameter/light_pos = Vector3(10, 15, 0)
+shader_parameter/annulus_pos = Vector3(0, 3, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_0s0dx"]
 material = SubResource("ShaderMaterial_6dm3l")

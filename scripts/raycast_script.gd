@@ -69,12 +69,12 @@ func UpdateDirty(delta):
 			ray_ball.set_shader_parameter("time", time)
 		1:
 			light_speed += delta * rate * go * 10.0
-			light_speed = clampf(light_speed, max(speed * 1.1, 20.0), 500.0)
+			light_speed = clampf(light_speed, max(speed * 1.2, 10.0), 500.0)
 			lorentz = 1.0 / sqrt(1.0 - speed ** 2 / light_speed ** 2)
 			ray_ball.set_shader_parameter("light_speed", light_speed)
 		2:
 			speed += delta * rate * go * 10.0
-			speed = clampf(speed, 0.0, light_speed * 0.99)
+			speed = clampf(speed, 0.0, light_speed * 0.90)
 			lorentz = 1.0 / sqrt(1.0 - speed ** 2 / light_speed ** 2)
 			ray_ball.set_shader_parameter("speed", speed)
 		3:
